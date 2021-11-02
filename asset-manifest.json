@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/reactBillManager-/static/css/main.6c17153e.chunk.css",
+    "main.css": "/reactBillManager-/static/css/main.2885d8ca.chunk.css",
     "main.js": "/reactBillManager-/static/js/main.7f7bf4a5.chunk.js",
     "main.js.map": "/reactBillManager-/static/js/main.7f7bf4a5.chunk.js.map",
     "runtime-main.js": "/reactBillManager-/static/js/runtime-main.9c03e7a2.js",
@@ -10,14 +10,14 @@
     "static/js/3.80e7b0d7.chunk.js": "/reactBillManager-/static/js/3.80e7b0d7.chunk.js",
     "static/js/3.80e7b0d7.chunk.js.map": "/reactBillManager-/static/js/3.80e7b0d7.chunk.js.map",
     "index.html": "/reactBillManager-/index.html",
-    "static/css/main.6c17153e.chunk.css.map": "/reactBillManager-/static/css/main.6c17153e.chunk.css.map",
+    "static/css/main.2885d8ca.chunk.css.map": "/reactBillManager-/static/css/main.2885d8ca.chunk.css.map",
     "static/js/2.9f632a88.chunk.js.LICENSE.txt": "/reactBillManager-/static/js/2.9f632a88.chunk.js.LICENSE.txt",
     "static/media/logo.4cb8c5bb.png": "/reactBillManager-/static/media/logo.4cb8c5bb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.9c03e7a2.js",
     "static/js/2.9f632a88.chunk.js",
-    "static/css/main.6c17153e.chunk.css",
+    "static/css/main.2885d8ca.chunk.css",
     "static/js/main.7f7bf4a5.chunk.js"
   ]
 }
