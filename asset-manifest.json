@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/AlexeyGasay/reactBillManager-.git/static/css/main.6ebcfa1f.chunk.css",
+    "main.js": "/AlexeyGasay/reactBillManager-.git/static/js/main.2836eb25.chunk.js",
+    "main.js.map": "/AlexeyGasay/reactBillManager-.git/static/js/main.2836eb25.chunk.js.map",
+    "runtime-main.js": "/AlexeyGasay/reactBillManager-.git/static/js/runtime-main.2d367810.js",
+    "runtime-main.js.map": "/AlexeyGasay/reactBillManager-.git/static/js/runtime-main.2d367810.js.map",
+    "static/js/2.9f632a88.chunk.js": "/AlexeyGasay/reactBillManager-.git/static/js/2.9f632a88.chunk.js",
+    "static/js/2.9f632a88.chunk.js.map": "/AlexeyGasay/reactBillManager-.git/static/js/2.9f632a88.chunk.js.map",
+    "static/js/3.80e7b0d7.chunk.js": "/AlexeyGasay/reactBillManager-.git/static/js/3.80e7b0d7.chunk.js",
+    "static/js/3.80e7b0d7.chunk.js.map": "/AlexeyGasay/reactBillManager-.git/static/js/3.80e7b0d7.chunk.js.map",
+    "index.html": "/AlexeyGasay/reactBillManager-.git/index.html",
+    "static/css/main.6ebcfa1f.chunk.css.map": "/AlexeyGasay/reactBillManager-.git/static/css/main.6ebcfa1f.chunk.css.map",
+    "static/js/2.9f632a88.chunk.js.LICENSE.txt": "/AlexeyGasay/reactBillManager-.git/static/js/2.9f632a88.chunk.js.LICENSE.txt",
+    "static/media/logo.4cb8c5bb.png": "/AlexeyGasay/reactBillManager-.git/static/media/logo.4cb8c5bb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2d367810.js",
+    "static/js/2.9f632a88.chunk.js",
+    "static/css/main.6ebcfa1f.chunk.css",
+    "static/js/main.2836eb25.chunk.js"
+  ]
+}
