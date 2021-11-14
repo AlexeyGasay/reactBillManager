@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/reactBillManager-/static/css/main.b653379b.chunk.css",
+    "main.css": "/reactBillManager-/static/css/main.2caf7c44.chunk.css",
     "main.js": "/reactBillManager-/static/js/main.42b7052b.chunk.js",
     "main.js.map": "/reactBillManager-/static/js/main.42b7052b.chunk.js.map",
     "runtime-main.js": "/reactBillManager-/static/js/runtime-main.ec12c2bf.js",
@@ -10,14 +10,14 @@
     "static/js/3.9069695e.chunk.js": "/reactBillManager-/static/js/3.9069695e.chunk.js",
     "static/js/3.9069695e.chunk.js.map": "/reactBillManager-/static/js/3.9069695e.chunk.js.map",
     "index.html": "/reactBillManager-/index.html",
-    "static/css/main.b653379b.chunk.css.map": "/reactBillManager-/static/css/main.b653379b.chunk.css.map",
+    "static/css/main.2caf7c44.chunk.css.map": "/reactBillManager-/static/css/main.2caf7c44.chunk.css.map",
     "static/js/2.7fed64f5.chunk.js.LICENSE.txt": "/reactBillManager-/static/js/2.7fed64f5.chunk.js.LICENSE.txt",
     "static/media/logo.4cb8c5bb.png": "/reactBillManager-/static/media/logo.4cb8c5bb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ec12c2bf.js",
     "static/js/2.7fed64f5.chunk.js",
-    "static/css/main.b653379b.chunk.css",
+    "static/css/main.2caf7c44.chunk.css",
     "static/js/main.42b7052b.chunk.js"
   ]
 }
