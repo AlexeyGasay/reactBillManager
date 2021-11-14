@@ -1,18 +1,20 @@
 import React from "react";
-import Notes from "./Notes";
 import logo from '../logo.png';
 
 import { NavLink } from "react-router-dom";
 
 const Header = props => {
-    
+
     return (
         <>
 
             <nav className="headerNav">
 
+                <NavLink to="/">
 
-                <img className="logo" src={logo} alt="logo" />
+                    <img className="logo" src={logo} alt="logo" />
+                    
+                </NavLink>
 
                 <ul>
                     <li><NavLink to="/statistics"

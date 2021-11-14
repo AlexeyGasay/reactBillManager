@@ -2,7 +2,13 @@ import React from "react";
 
 
 const AddNewNote = (props) => {
-    // debugger
+
+
+    function check(e) {
+        props.changeSortCategory(e.target.value);
+        props.sortNotes(e.target.value);
+    }
+
     return (
         <div>
             <div className="inputBox">
@@ -19,33 +25,59 @@ const AddNewNote = (props) => {
                     onChange={props.setPrice}
                 />
 
-                <input type='text' 
-                
+                <input type='text'
+
                     placeholder={'enter new category'}
                     value={props.newCategory}
                     onChange={(e) => {
-                        props.setNewCategory(e.target.value) 
+                        props.setNewCategory(e.target.value)
                     }
-                        
+
                     }
 
                 />
 
             </div>
-            <button onClick={props.addNote} >Добавить</button>
-            <button onClick={() => props.addCategory(props.newCategory)} >Добавить категорию</button>
-            <button onClick={props.clearNotes}>Очистить всё</button>
-
-            <select value={props.selectCategory.value} onChange={props.changeCategory}>
-                {
-                    props.categories.map((el) => {
-                        // debugger
-                        return  <option key={el.id} value={el.name}>{el.name}</option>
-                    })
-                }
 
 
-            </select>
+
+            <div className="buttonBox">
+
+                <button onClick={props.addNote} >Добавить</button>
+                <button onClick={() => props.addCategory(props.newCategory)} >Добавить категорию</button>
+                <button onClick={props.clearNotes}>Очистить всё</button>
+
+                <select value={props.selectCategory.value} onChange={props.changeCategory}>
+                    {
+                        props.categories.map((el) => {
+                            return <option key={el.id} value={el.name}>{el.name}</option>
+                        })
+                    }
+
+
+                </select>
+
+            </div>
+
+            <div className="sortBox">
+
+
+
+                <h2 className="sort">Сортировка по ....</h2>
+
+                <select value={props.selectSortCategory.value} onChange={check}>
+                    {
+                        props.sortCategories.map((el) => {
+                            return <option key={el.value} value={el.value}>{el.value}</option>
+                        })
+                    }
+
+
+                </select>
+
+            </div>
+
+
 
 
 

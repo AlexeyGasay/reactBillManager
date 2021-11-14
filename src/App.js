@@ -1,18 +1,16 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
-import SideBar from './components/SideBar';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import {Route} from "react-router-dom";
 import StatisticsContainer from './components/StatisticsContainer';
 import ExpensesContainer from './components/ExpensesContainer';
-import { HashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import * as V from 'victory';
 
 function App() {
 
 
-  // сохранение данных в LS
+  // сохранение данных в LocalStorage
   useEffect(() => {
     numTotalCost(notes);
     localStorage.setItem('notes', JSON.stringify(notes));
@@ -24,7 +22,7 @@ function App() {
 
 
 
-  // Распаковка данных из LS
+  // Распаковка данных из LocalStorage
   const [notes, setNotes] = useState(() => {
     let saved = localStorage.getItem('notes');
     let initValue = JSON.parse(saved);
@@ -35,7 +33,6 @@ function App() {
   const [categories, setCategories] = useState(() => {
     let saved = localStorage.getItem('categories');
     let initValue = JSON.parse(saved);
-    // debugger
     if (initValue == null || initValue.length == 0) {
       return [
         { id: 0, name: 'Еда', sum: 0, },
@@ -48,12 +45,76 @@ function App() {
 
 
 
+  const [totalCost, setTotalCost] = useState(0);
 
   const [textNote, setTextNote] = useState('Taxi');
   const [price, setPriceValue] = useState(100);
-  const [totalCost, setTotalCost] = useState(0);
+
   const [selectCategory, setCategory] = useState({ value: 'Связь' });
   const [newCategory, setNewCategory] = useState('newCategory');
+
+  const [sortCategories, setSortCategories] = useState([
+    { value: 'Свежие' },
+    { value: 'Давние' },
+    { value: 'Дорогие' },
+    { value: 'Дешевые' },
+
+  ]);
+
+
+
+  const [selectSortCategory, setSelectSortCategory] = useState({ value: 'Давние' });
+
+  const changeSortCategory = e => {
+    setSelectSortCategory({ value: e });
+
+  }
+
+
+
+
+    const sortNotes = (selCategory) => {
+
+
+      let Notes = [...notes];
+
+
+      if(selCategory.value === "Свежие") {
+
+
+        setNotes(Notes.sort(function (a, b) {
+          var dateA = new Date(b.date), dateB = new Date(a.date)
+
+          return dateA - dateB
+        }));
+
+      } 
+
+      else if (selCategory.value === "Давние") {
+
+        setNotes(Notes.sort(function (a, b) {
+          var dateA = new Date(a.date), dateB = new Date(b.date)
+
+          return dateA - dateB
+        }));
+      }
+
+      else if (selCategory.value === "Дорогие") {
+        setNotes(Notes.sort(function (a, b) {
+          return +b.price - +a.price
+        }));
+      }
+
+      else if (selCategory.value === "Дешевые") {
+        setNotes(Notes.sort(function (a, b) {
+          return +a.price - +b.price
+        }));
+      }
+
+    }
+
+
+
 
 
   let [pieData, setPieData] = useState([]);
@@ -108,6 +169,7 @@ function App() {
     count <= 0 ? copyCateg.push(newCateg) : count = null;
 
     setCategories(copyCateg);
+    setNewCategory("");
   }
 
 
@@ -148,18 +210,20 @@ function App() {
 
 
 
-
   const deleteNote = id => {
-    let newArr = notes;
+    let newArr = [...notes];
     newArr = newArr.filter(el => el.id !== id)
     setNotes(newArr);
   }
 
+
+
+
   const deleteCategory = (id, category) => {
-    let newArr = categories;
+    let newArr = [...categories];
     newArr = newArr.filter(el => el.id !== id);
 
-    let newArr2 = notes;
+    let newArr2 = [...notes];
     newArr2 = newArr2.filter(el => el.category !== category);
 
 
@@ -176,6 +240,7 @@ function App() {
     setPriceValue(e.target.value)
   }
 
+
   const clearNotes = () => {
     setNotes([]);
     localStorage.clear();
@@ -185,6 +250,7 @@ function App() {
 
 
   const addNote = () => {
+    // let id = 0;
     let data = new Date;
     let newnote = {
       id: Math.random(100) * 100000,
@@ -192,8 +258,10 @@ function App() {
       price: price,
       category: selectCategory.value,
       date: data.toLocaleString(),
+      numDate: data.getTime(),
 
     };
+
 
     setNotes([...notes, newnote]);
     numTotalCost(notes);
@@ -215,6 +283,8 @@ function App() {
 
 
 
+
+
   useEffect(() => {
     doSumCategory()
   }, [notes])
@@ -224,12 +294,9 @@ function App() {
     setData();
   }, [notes])
 
-
-
-  // Хард проверка
-  window.qwe = notes;
-  window.c = categories;
-  window.p = pieData;
+  useEffect(() => {
+    sortNotes(selectSortCategory);
+  }, [selectSortCategory])
 
 
   return (
@@ -237,55 +304,59 @@ function App() {
     <div className="App">
 
 
-        <Route path='*' component={Header} >
-            
-        </Route>
+      <Route path='*' component={Header} >
+
+      </Route>
 
 
-        <div className="main">
+      <div className="main">
 
 
-          <Route path='/statistics' render={() =>
-            <StatisticsContainer
-              categories={categories}
-              deleteCategory={deleteCategory}
-              totalCost={totalCost}
-              pieData={pieData}
-            />
-
-          }
+        <Route path='/statistics' render={() =>
+          <StatisticsContainer
+            categories={categories}
+            deleteCategory={deleteCategory}
+            totalCost={totalCost}
+            pieData={pieData}
           />
 
-          <Route path='/expenses' render={() =>
-            <ExpensesContainer
-              notes={notes}
-              deleteNote={deleteNote}
-              categories={categories}
-              textNote={textNote}
-              setText={setText}
-              addNote={addNote}
-              price={price}
-              setPrice={setPrice}
-              clearNotes={clearNotes}
-              selectCategory={selectCategory}
-              changeCategory={changeCategory}
-              addCategory={addCategory}
-              categories={categories}
-              newCategory={newCategory}
-              setNewCategory={setNewCategory}
-            />
+        }
+        />
 
-          }
-
-
+        <Route path='/expenses' render={() =>
+          <ExpensesContainer
+            notes={notes}
+            deleteNote={deleteNote}
+            categories={categories}
+            textNote={textNote}
+            setText={setText}
+            addNote={addNote}
+            price={price}
+            setPrice={setPrice}
+            clearNotes={clearNotes}
+            selectCategory={selectCategory}
+            changeCategory={changeCategory}
+            addCategory={addCategory}
+            categories={categories}
+            newCategory={newCategory}
+            setNewCategory={setNewCategory}
+            sortCategories={sortCategories}
+            selectSortCategory={selectSortCategory}
+            changeSortCategory={changeSortCategory}
+            sortNotes={sortNotes}
           />
 
+        }
+
+
+        />
 
 
 
-          <SideBar />
 
-        </div>
+        {/* <SideBar /> */}
+
+      </div>
 
 
 

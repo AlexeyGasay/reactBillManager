@@ -40,15 +40,3 @@
 * {
   list-style: none;
 }
-
-.inputBox {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inputBox input {
-  width: 200px;
-  padding: 5px;
-}

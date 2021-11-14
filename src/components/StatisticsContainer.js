@@ -3,7 +3,6 @@ import Categories from "./Categories";
 
 
 const StatisticsContainer = props => {
-    // debugger
     return (
         <>
             <Categories

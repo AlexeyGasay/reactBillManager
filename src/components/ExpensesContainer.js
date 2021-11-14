@@ -20,6 +20,10 @@ const ExpensesContainer = props => {
                 categories={props.categories}
                 newCategory={props.newCategory}
                 setNewCategory={props.setNewCategory}
+                sortCategories={props.sortCategories}
+                selectSortCategory={props.selectSortCategory}
+                changeSortCategory={props.changeSortCategory}
+                sortNotes={props.sortNotes}
             />
 
 

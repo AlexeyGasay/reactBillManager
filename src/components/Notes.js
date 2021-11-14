@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect } from "react/cjs/react.development";
 
 
 const Notes = props => {
-    // debugger
+
 
     return (
         <div>
@@ -12,7 +11,7 @@ const Notes = props => {
                 {!props.notes.length ? <div>Заметок нет</div> : props.notes.map(el => {
                     return (
 
-                        <li>
+                        <li key={el.id}>
                             <div className="noteTitle">
                                 <div>{el.text}</div>
                                 <div>{el.date}</div>
@@ -26,6 +25,7 @@ const Notes = props => {
                             </span>
 
                         </li>
+
                     )
                 })}
             </ul>

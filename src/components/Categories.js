@@ -4,7 +4,6 @@ import * as V from 'victory';
 import { VictoryPie } from 'victory';
 
 const Categories = (props) => {
-    debugger
 
     let pie;
 
@@ -39,12 +38,9 @@ const Categories = (props) => {
     return (
         <div>
 
-            <h2 className="sort">Сортировка по ....</h2>
-
             <h2 className="totalCost">Общая сумма {props.totalCost}</h2>
 
             {props.categories.map(el => {
-                // debugger
                 return <h2 className="categories" key={el.id}>
                     {el.name}:
                     <span>{el.sum}</span>
@@ -53,6 +49,10 @@ const Categories = (props) => {
             })}
 
             <div className="pie">
+
+                <span>
+                </span>
+                    
 
                 {pie}
 

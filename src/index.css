@@ -8,6 +8,7 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   background-color: #FFD6C9;
+  overflow-x: hidden;
 }
 
 #root {
@@ -18,14 +19,13 @@ body {
   position: relative;
 }
 
-.App {
-  /* display: flex; */
-}
 
 .main {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  min-height: 35vh;
+
 }
 
 
@@ -70,12 +70,12 @@ code {
   display: flex;
   flex-direction: column;
   padding: 0 3rem;
+  font-family: sans-serif;
 
 }
 
 .notes li {
   font-size: 20px;
-  /* border: 1px solid red; */
   margin: 20px 0;
   border-radius: 20px;
   background: #fff;
@@ -84,6 +84,23 @@ code {
   justify-content: space-around;
   align-items: center;
 
+}
+
+.sortBox {
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.sortBox select {
+  margin-left: 10px;
+  background: none;
+  color: rgb(110, 107, 107);
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
 
 .noteTitle {
@@ -95,9 +112,9 @@ code {
 }
 
 .nameCategory {
-  font-family: serif;
+  font-family: sans-serif;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 21px;
 }
 
 
@@ -149,9 +166,91 @@ code {
 }
 
 .pie {
-  /* max-width: 40%; */
   margin: 0 auto;
   height: 600px;
   width: 600px;
   overflow: visible;
+  position: relative;
+}
+.pie span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+.inputBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputBox input {
+  width: 200px;
+  padding: 5px;
+}
+
+.inputBox input {
+  border: none;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 18px;
+  color: rgb(110, 107, 107);
+}
+
+.buttonBox {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonBox button {
+  color: rgb(110, 107, 107);
+  /* background: none; */
+  font-weight: bold;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  transition: .3s;
+  margin: 0 5px; 
+  z-index: 1;
+}
+
+.buttonBox button::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(110, 107, 107);
+  left: 0;
+  top: 0;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.buttonBox button:hover {
+  color: #3461a0;
+}
+
+.buttonBox button:hover:before {
+  background-color: rgb(137, 207, 240);
+  transition: .3s;
+  border: transparent;
+}
+
+
+.buttonBox select {
+  background: none;
+  color: rgb(110, 107, 107);
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
