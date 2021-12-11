@@ -43,17 +43,18 @@ const AddNewNote = (props) => {
 
             <div className="buttonBox">
 
-                <button onClick={props.addNote} >Добавить</button>
-                <button onClick={() => props.addCategory(props.newCategory)} >Добавить категорию</button>
-                <button onClick={props.clearNotes}>Очистить всё</button>
+                <button className="buttonBoxItem" onClick={props.addNote} >Добавить</button>
+                <button className="buttonBoxItem" onClick={() => props.addCategory(props.newCategory)} >Добавить категорию</button>
+                <button className="buttonBoxItem" onClick={props.clearNotes}>Очистить всё</button>
 
-                <select value={props.selectCategory.value} onChange={props.changeCategory}>
+                <select className="buttonBoxItem" value={props.selectCategory.value} onChange={props.changeCategory}>
                     {
                         props.categories.map((el) => {
                             return <option key={el.id} value={el.name}>{el.name}</option>
                         })
                     }
-
+                    
+                    <option key="empty"></option>
 
                 </select>
 

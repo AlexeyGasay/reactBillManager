@@ -1,11 +1,8 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import {Route} from "react-router-dom";
 import StatisticsContainer from './components/StatisticsContainer';
 import ExpensesContainer from './components/ExpensesContainer';
-import ReactDOM from 'react-dom';
-import * as V from 'victory';
 
 function App() {
 
@@ -15,7 +12,6 @@ function App() {
     numTotalCost(notes);
     localStorage.setItem('notes', JSON.stringify(notes));
     localStorage.setItem('categories', JSON.stringify(categories));
-
   })
 
 
@@ -50,18 +46,16 @@ function App() {
   const [textNote, setTextNote] = useState('Taxi');
   const [price, setPriceValue] = useState(100);
 
-  const [selectCategory, setCategory] = useState({ value: 'Связь' });
+  const [selectCategory, setCategory] = useState({ value: '' });
   const [newCategory, setNewCategory] = useState('newCategory');
 
-  const [sortCategories, setSortCategories] = useState([
+  const sortCategories = [ 
     { value: 'Свежие' },
     { value: 'Давние' },
     { value: 'Дорогие' },
     { value: 'Дешевые' },
 
-  ]);
-
-
+  ];
 
   const [selectSortCategory, setSelectSortCategory] = useState({ value: 'Давние' });
 
@@ -75,7 +69,6 @@ function App() {
 
     const sortNotes = (selCategory) => {
 
-
       let Notes = [...notes];
 
 
@@ -83,9 +76,8 @@ function App() {
 
 
         setNotes(Notes.sort(function (a, b) {
-          var dateA = new Date(b.date), dateB = new Date(a.date)
 
-          return dateA - dateB
+          return b.numDate - a.numDate
         }));
 
       } 
@@ -93,9 +85,8 @@ function App() {
       else if (selCategory.value === "Давние") {
 
         setNotes(Notes.sort(function (a, b) {
-          var dateA = new Date(a.date), dateB = new Date(b.date)
 
-          return dateA - dateB
+          return a.numDate - b.numDate
         }));
       }
 
@@ -126,11 +117,11 @@ function App() {
 
 
     copyCateg.map(el => {
-      if (el.sum > 0) {
+      if (el.sum > 0 & el.name.length > 0) {
         newData.push({
           x: el.name,
           y: el.sum
-        })
+        }) 
       }
     })
 
@@ -147,6 +138,10 @@ function App() {
 
   const addCategory = (value) => {
 
+    if(value.length <=0) {
+      return
+    }
+
     let copyCateg = [...categories];
     let newCateg = {
       id: Math.random(100) * 100000,
@@ -155,8 +150,11 @@ function App() {
 
     }
 
+    // счетчик совпадений
     let count = 0;
 
+
+    // поиск совпадений
     categories.forEach(el => {
       if (el.name == value) {
         count++;
@@ -169,7 +167,7 @@ function App() {
     count <= 0 ? copyCateg.push(newCateg) : count = null;
 
     setCategories(copyCateg);
-    setNewCategory("");
+    setNewCategory("")
   }
 
 
@@ -197,7 +195,7 @@ function App() {
 
     notes.forEach(element => {
       copySumCateg.forEach(el => {
-        if (element.category == el.name) {
+        if (element.category == el.name & el.name.length > 0) {
           return el.sum += +element.price
         }
       })
@@ -226,7 +224,7 @@ function App() {
     let newArr2 = [...notes];
     newArr2 = newArr2.filter(el => el.category !== category);
 
-
+    setCategory({value: ""});
     setCategories(newArr);
     setNotes(newArr2);
 
@@ -250,7 +248,9 @@ function App() {
 
 
   const addNote = () => {
-    // let id = 0;
+    if(categories.length <= 0 || selectCategory.value.length <=0) {
+      return
+    }
     let data = new Date;
     let newnote = {
       id: Math.random(100) * 100000,
@@ -287,10 +287,6 @@ function App() {
 
   useEffect(() => {
     doSumCategory()
-  }, [notes])
-
-
-  useEffect(() => {
     setData();
   }, [notes])
 
@@ -299,14 +295,15 @@ function App() {
   }, [selectSortCategory])
 
 
+  window.notes = notes;
+
   return (
 
     <div className="App">
 
 
-      <Route path='*' component={Header} >
+      <Route path='*' component={Header} />
 
-      </Route>
 
 
       <div className="main">
@@ -351,10 +348,6 @@ function App() {
 
         />
 
-
-
-
-        {/* <SideBar /> */}
 
       </div>
 

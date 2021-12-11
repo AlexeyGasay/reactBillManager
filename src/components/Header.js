@@ -10,7 +10,7 @@ const Header = props => {
 
             <nav className="headerNav">
 
-                <NavLink to="/">
+                <NavLink to="/" className="logoBox">
 
                     <img className="logo" src={logo} alt="logo" />
                     

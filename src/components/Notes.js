@@ -11,7 +11,7 @@ const Notes = props => {
                 {!props.notes.length ? <div>Заметок нет</div> : props.notes.map(el => {
                     return (
 
-                        <li key={el.id}>
+                        <li key={el.id} className="notesItem">
                             <div className="noteTitle">
                                 <div>{el.text}</div>
                                 <div>{el.date}</div>

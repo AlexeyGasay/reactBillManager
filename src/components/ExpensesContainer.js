@@ -4,7 +4,6 @@ import AddNewNote from './AddNewNote';
 
 
 const ExpensesContainer = props => {
-    // debugger
     return (
         <>
             <AddNewNote

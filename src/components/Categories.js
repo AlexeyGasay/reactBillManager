@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import * as V from 'victory';
 import { VictoryPie } from 'victory';
 
 const Categories = (props) => {
@@ -18,15 +16,13 @@ const Categories = (props) => {
             width={550}
 
             animate={{
-                duration: 1150
+                duration: 1300
             }}
 
 
-            //   innerRadius={50}
             labelRadius={150}
-            style={{ labels: { fontSize: 12, fill: "black" } }}
+            style={{ labels: { fontSize: 20, fill: "black" } }}
 
-        // radius={({ datum }) => 20 + datum.y * 200}
         />;
     } else pie = 'Расходов нет'
 
@@ -41,11 +37,16 @@ const Categories = (props) => {
             <h2 className="totalCost">Общая сумма {props.totalCost}</h2>
 
             {props.categories.map(el => {
+                if(el.name.length <= 0) {
+                    return null
+                }
                 return <h2 className="categories" key={el.id}>
                     {el.name}:
                     <span>{el.sum}</span>
                     <button className="btnDel" onClick={() => props.deleteCategory(el.id, el.name)}>X</button>
                 </h2>
+
+
             })}
 
             <div className="pie">
